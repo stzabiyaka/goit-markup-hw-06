@@ -698,9 +698,10 @@ img {
 }
 .footer-address:not(:last-child) {
   margin-bottom: 9px;
+  margin-right: 70px;
 }
 .footer-social {
-  margin-left: 70px;
+  margin-right: 93px;
   padding-top: 12px;
   color: var(--white-color);
 }
@@ -716,4 +717,15 @@ img {
 .transparent-background {
   color: var(--white-color);
   background-color: rgba(255, 255, 255, 0.1);
+}
+.email-input {
+  padding-top: 12px;
+}
+.email-input-title {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: var(--white-color);
 }
