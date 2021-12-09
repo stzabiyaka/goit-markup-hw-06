@@ -531,6 +531,7 @@ img {
 .close-button:focus {
   color: var(--accent-color);
   transform: rotateZ(360deg);
+  outline: none;
 }
 .modal-backdrop.is-hidden {
   visibility: hidden;
@@ -555,37 +556,51 @@ img {
   display: block;
 }
 .modal-form-field {
+  position: relative;
   display: block;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 10px;
 }
+.modal-form-field:focus-within > .modal-form-input,
+.modal-form-field:focus-within > .icon-form {
+  border-color: var(--accent-color);
+  outline: none;
+  fill: var(--accent-color);
+}
 .modal-form-field.textarea {
   margin-bottom: 20px;
 }
 .modal-form-field.agreement {
+  display: block;
   margin-bottom: 30px;
-
-  text-align: center;
+  padding-left: 12px;
 }
 .modal-form-input {
   width: 100%;
   height: 40px;
-  padding-left: 12px;
+  padding-left: 42px;
   padding-right: 12px;
 
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
 
-  transition-property: color border-color;
+  transition-property: border-color;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing);
 }
-.modal-form-input:focus-within {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-  outline: none;
+.icon-form {
+  position: absolute;
+  bottom: 21px;
+  left: 12px;
+
+  fill: var(--title-text-color);
+
+  transform: translateY(50%);
+  transition-property: fill;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
 }
 .modal-form-input-text {
   height: 120px;
@@ -611,26 +626,48 @@ img {
 .modal-form-input-text::placeholder {
   color: rgba(117, 117, 117, 0.5);
 }
-.modal-form-input-checkbox {
+
+.hidden {
+  /* -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none; */
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.modal-form-label-agreement {
   display: inline-block;
+  font-size: 14px;
+  line-height: 1.71;
+}
+.checkbox-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 16px;
   height: 15px;
   margin-right: 7px;
 
-  background-color: orangered;
-  background-image: url(../images/icons.svg#icon-checkbox);
-  text-align: center;
-  vertical-align: middle;
+  border: 2px solid var(--title-text-color);
+  border-radius: 2px;
+  fill: transparent;
+  stroke: transparent;
+
+  transition-property: border-color background-color fill stroke;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
 }
-.hidden {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
+.modal-form-input-checkbox:checked + .checkbox-icon {
+  border-color: transparent;
+  background-color: var(--accent-color);
+  fill: var(--white-color);
+  stroke: var(--white-color);
 }
-.modal-form-label-agreement {
-  font-size: 14px;
-  line-height: 1.71;
-  text-align: center;
+.modal-form-input-checkbox:focus + .checkbox-icon {
+  outline: var(--accent-color) solid 1px;
 }
 .agreement-link,
 .agreement-link:visited {
@@ -816,11 +853,11 @@ img {
   color: var(--white-color);
   background-color: rgba(255, 255, 255, 0.1);
 }
-.email-input-container {
+.email-subscription-container {
   padding-top: 12px;
   margin-left: auto;
 }
-.email-input-title {
+.email-subscription-title {
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 14px;
@@ -828,11 +865,11 @@ img {
   text-transform: uppercase;
   color: var(--white-color);
 }
-.form-email-input {
+.form-email-subscription-input {
   display: flex;
   align-items: center;
 }
-.email-input {
+.email-subscription-input {
   display: flex;
   align-items: center;
   width: 358px;
@@ -853,22 +890,22 @@ img {
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing);
 }
-.email-input::placeholder {
+.email-subscription-input::placeholder {
   font-size: 16px;
   line-height: 1.25;
 
   color: rgba(255, 255, 255, 0.6);
 }
-.email-input:focus-within {
+.email-subscription-input:focus-within {
   border-color: var(--accent-color);
   outline: none;
 }
-.email-input-button::after {
-  content: '';
+.subscription-icon-container {
   display: inline-block;
-  vertical-align: middle;
   width: 24px;
   height: 24px;
   margin-left: 10px;
-  background-image: url(../images/send.svg);
+}
+.subscription-icon {
+  vertical-align: middle;
 }
